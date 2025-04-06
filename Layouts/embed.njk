@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="{{ 'built.css' | assetUrl }}" rel="stylesheet"/>
+    <link href="{{ 'custom.css' | assetUrl }}" rel="stylesheet"/>
+
+    <style id="theme-styles">
+      :root {
+        --cl-accent: {{ global.properties.accent_color | hex_to_rgb }};
+        --cl-background: {{ global.properties.background_color | hex_to_rgb }};
+        --cl-card: {{ global.properties.card_color | hex_to_rgb }};
+        --cl-t-primary: {{ (global.properties.text_primary_color if global.properties.text_primary_color else '#ffffff') | hex_to_rgb }};
+        --cl-t-accent: {{ (global.properties.text_accent_color if global.properties.text_accent_color else '#ffffff') | hex_to_rgb }};
+      }
+
+      body {
+        font-family: '{{ (global.properties.font if global.properties.font else 'Inter') }}', sans-serif;
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family={{ (global.properties.font if global.properties.font else 'Inter') | replace(" ", "+") }}:wght@300;400;500;600;700&display=swap" rel="stylesheet" id="theme-font">
+    <link href="https://cdn.jsdelivr.net/npm/choices.js@10.2.0/public/assets/styles/choices.min.css" rel="stylesheet" integrity="sha256-gS3HxgWFFFqEo0wQoALebu5XlWdYr3gqd4/Tk5wt8Ig=" crossorigin="anonymous" />
+  </head>
+  <body class="bg-background">
+    {% if shop.background_image_url %}
+      <div class="fixed inset-0 z-[-1] bg-center bg-cover pointer-events-none" style="background-image: url({{ shop.background_image_url }});"></div>
+    {% endif %}
+
+    <div class="relative" id="app">
+      {{ templateContent | safe }}
+    </div>
+
+    {% if isBuilder %}
+      {% render_snippet "script-builder.njk" %}
+    {% endif %}
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.2/dist/cdn.min.js"
+      integrity="sha256-MAnclv071ggEnpQbfWW6weXXKd5wErU2fZ6yuDYvdPE="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/choices.js@10.2.0/public/assets/scripts/choices.min.js"
+      integrity="sha256-P+JgcxEeZtxwYS1+TAAuusKFM646SB8Oodk0TYu9zuo="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
