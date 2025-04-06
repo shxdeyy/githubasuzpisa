@@ -1,0 +1,166 @@
+{
+    "templates": {
+        "shop": {
+            "layout": "master",
+            "components": {
+                "products": {
+                    "type": "products",
+                    "properties": {
+                        "title": null,
+                        "show_searchbar": true,
+                        "ids": []
+                    }
+                }
+            },
+            "components_order": [
+                "products"
+            ]
+        },
+        "cart": {
+            "layout": "master",
+            "components": {
+                "cart-page": {
+                    "type": "cart-page",
+                    "properties": []
+                }
+            },
+            "components_order": [
+                "cart-page"
+            ]
+        },
+        "product": {
+            "layout": "master",
+            "components": {
+                "product-page": {
+                    "type": "product-page",
+                    "properties": {
+                        "variant_selector": "buttons",
+                        "show_feedbacks": true,
+                        "feedbacks_amount": 4,
+                        "hide_add_to_cart": false,
+                        "hide_buy_now": false
+                    }
+                }
+            },
+            "components_order": [
+                "product-page"
+            ]
+        },
+        "feedback": {
+            "layout": "master",
+            "components": {
+                "feedbacks": {
+                    "type": "feedbacks",
+                    "properties": {
+                        "title": null,
+                        "amount": null
+                    }
+                }
+            },
+            "components_order": [
+                "feedbacks"
+            ]
+        },
+        "terms": {
+            "layout": "master",
+            "components": {
+                "terms-page": {
+                    "type": "terms-page",
+                    "properties": []
+                }
+            },
+            "components_order": [
+                "terms-page"
+            ]
+        },
+        "status": {
+            "layout": "master",
+            "components": {
+                "status-page": {
+                    "type": "status-page",
+                    "properties": []
+                }
+            },
+            "components_order": [
+                "status-page"
+            ]
+        },
+        "faq": {
+            "layout": "master",
+            "components": {
+                "faq": {
+                    "type": "faq",
+                    "properties": {
+                        "title": null,
+                        "items": [
+                            {
+                                "question": "What is this theme?",
+                                "answer": "This is the default SellAuth theme called Main. It is a simple and clean theme that is perfect for any type of store."
+                            }
+                        ]
+                    }
+                }
+            },
+            "components_order": [
+                "faq"
+            ]
+        }
+    },
+    "global": {
+        "properties": {
+            "accent_color": "#6571ff",
+            "background_color": "#070d19",
+            "card_color": "#0c1427",
+            "text_primary_color": "#ffffff",
+            "text_accent_color": "#ffffff",
+            "font": "Inter",
+            "snow": false
+        },
+        "components": {
+            "announcement": {
+                "announcements": []
+            },
+            "header": {
+                "show_shop_name": true,
+                "show_logo": true,
+                "show_description": false,
+                "show_stats": true,
+                "links": [
+                    {
+                        "text": "Products",
+                        "link": "\/"
+                    },
+                    {
+                        "text": "Reviews",
+                        "link": "\/feedback"
+                    },
+                    {
+                        "text": "FAQ",
+                        "link": "\/faq"
+                    },
+                    {
+                        "text": "Status",
+                        "link": "\/status"
+                    },
+                    {
+                        "text": "Customer Panel",
+                        "link": "\/customer"
+                    }
+                ],
+                "hide_cart": false
+            },
+            "footer": {
+                "show_shop_name": true,
+                "show_logo": false,
+                "show_socials": true,
+                "copyright": "Copyright \u00a9 {{ shop.name }} {{ '' | currentYear }}",
+                "links": [
+                    {
+                        "text": "Terms of Service",
+                        "link": "\/terms"
+                    }
+                ]
+            }
+        }
+    }
+}
