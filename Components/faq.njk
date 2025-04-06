@@ -1,0 +1,36 @@
+{% set containerClass = '' %}
+{% if templateName == 'faq' %}
+  {% set containerClass = 'max-w-3xl mx-auto' %}
+{% endif %}
+
+<section id="{{ componentId }}" class="component" data-component-id="{{ componentId }}">
+  <div class="py-6 lg:py-8">
+    {% if properties.title %}
+      <h2 class="mb-4 text-t-primary text-2xl font-bold pl-2 border-l-4 border-l-accent-500">
+        {{ properties.title | renderString }}
+      </h2>
+    {% endif %}
+  
+    <div class="{{ containerClass }}">
+      <div class="flex flex-col gap-4">
+        {% for item in properties.items %}
+          <div class="bg-card border border-white/5 rounded-lg text-t-primary relative p-4 md:p-6" x-data="{ isOpen: false }">
+            <button class="w-full flex justify-between items-center" @click="isOpen = !isOpen">
+              <h4 class="text-left text-base font-semibold md:text-lg">
+                {{ item.question | renderString }}
+              </h4>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-accent-500 size-6 hover:scale-110 transition-transform ease-in-out duration-150" :class="{ 'rotate-180': isOpen }">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div x-ref="content" :style="isOpen ? `max-height: ${$refs.content.scrollHeight}px` : ''" class="overflow-hidden transition-all ease-in-out duration-150 max-h-0">
+              <p class="pt-2 text-sm text-t-primary/80 md:text-base">
+                {{ item.answer | renderString }}
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+<section id="{{ componentId }}" class="component" data-component-id="{{ componentId }}">
+  <div class="py-6 lg:py-8">
+    {% if properties.title %}
+      <h2 class="mb-4 text-t-primary text-2xl font-bold pl-2 border-l-4 border-l-accent-500">
+        {{ properties.title | renderString }}
+      </h2>
+    {% endif %}
+    
+    <div class="max-w-3xl mx-auto">
+      <div class="flex flex-col gap-4">
+        {% for product in sortedItems %}
+          {% if product.type == 'group' %}
+            <div class="mb-4">
+              <h2 class="text-lg font-bold text-t-primary mb-2 md:text-xl">{{ product.name }}</h2>
+              <div class="flex flex-col gap-4">
+                {% for product in product.products %}
+                  {% render_snippet "status-card.njk", product=product %}
+                {% endfor %}
+              </div>
+            </div>
+          {% elif not product.group_id %}
+            {% render_snippet "status-card.njk", product=product %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+<section id="{{ componentId }}" class="component" data-component-id="{{ componentId }}">
+  <div class="py-6 lg:py-8">
+    {% if properties.title %}
+      <h2 class="mb-4 text-t-primary text-2xl font-bold pl-2 border-l-4 border-l-accent-500">
+        {{ properties.title | renderString }}
+      </h2>
+    {% endif %}
+  
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-card border border-white/5 rounded-lg text-t-primary/80 text-sm p-4 md:text-base md:p-6">
+        <div class="editor">
+          {{ shop.terms | safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
